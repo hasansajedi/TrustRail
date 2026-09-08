@@ -224,6 +224,21 @@ checks that evidence against trusted source policy and emits content-free result
     options:
       members: true
 
+## GenAI data lifecycle
+
+Lifecycle models bind classification, purpose, residency, retention, training
+consent, legal holds, subject references, external locations, and derivation
+lineage. `DataLifecycleManager` completely mediates registration, derivation,
+use, tombstone-first deletion, and connector verification.
+
+::: trustrail.models.data_lifecycle
+    options:
+      members: true
+
+::: trustrail.data_lifecycle
+    options:
+      members: true
+
 ## System prompt leakage
 
 `SystemPromptTemplate` requires explicit data classification before rendering.

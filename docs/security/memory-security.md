@@ -96,7 +96,9 @@ application monitoring and retry.
   atomic, durable state at the persistence boundary.
 - Trustrail stores metadata and bounded normalized fragments in memory; the
   application remains responsible for encryption, retention, access control,
-  deletion, and protecting raw memory bytes and review channels.
+  deletion, and protecting raw memory bytes and review channels. Use
+  [GenAI data lifecycle](data-lifecycle.md) records and verified connector
+  deletion to carry those obligations through memory derivatives.
 - Pattern detection cannot prove factual correctness or detect every multilingual,
   semantic, steganographic, or model-specific poison. Apply source verification,
   domain validation, monitoring, and red-team evaluation.

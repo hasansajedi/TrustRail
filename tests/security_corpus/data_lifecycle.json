@@ -1,0 +1,80 @@
+[
+  {
+    "id": "classification_downgrade",
+    "mutation": "classification",
+    "value": "public",
+    "expected_code": "classification_downgrade"
+  },
+  {
+    "id": "purpose_expansion",
+    "mutation": "derived_purpose",
+    "value": "advertising",
+    "expected_code": "purpose_downgrade"
+  },
+  {
+    "id": "residency_expansion",
+    "mutation": "derived_residency",
+    "value": "us",
+    "expected_code": "residency_downgrade"
+  },
+  {
+    "id": "retention_extension",
+    "mutation": "derived_retention_days",
+    "value": "60",
+    "expected_code": "retention_downgrade"
+  },
+  {
+    "id": "consent_laundering",
+    "mutation": "training_consent",
+    "value": "granted",
+    "expected_code": "consent_downgrade"
+  },
+  {
+    "id": "legal_hold_drop",
+    "mutation": "legal_hold",
+    "value": "drop",
+    "expected_code": "legal_hold_dropped"
+  },
+  {
+    "id": "subject_lineage_drop",
+    "mutation": "subject_lineage",
+    "value": "drop",
+    "expected_code": "subject_lineage_dropped"
+  },
+  {
+    "id": "incompatible_use_purpose",
+    "mutation": "use_purpose",
+    "value": "advertising",
+    "expected_code": "purpose_denied"
+  },
+  {
+    "id": "cross_region_export",
+    "mutation": "use_residency",
+    "value": "us",
+    "expected_code": "residency_denied"
+  },
+  {
+    "id": "training_without_consent",
+    "mutation": "use_kind",
+    "value": "training",
+    "expected_code": "training_consent_denied"
+  },
+  {
+    "id": "use_retention_extension",
+    "mutation": "use_retention_days",
+    "value": "60",
+    "expected_code": "retention_extension"
+  },
+  {
+    "id": "deletion_without_scope",
+    "mutation": "deletion_scope",
+    "value": "drop",
+    "expected_code": "deletion_scope_missing"
+  },
+  {
+    "id": "forged_deletion_plan",
+    "mutation": "plan_digest",
+    "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "expected_code": "deletion_plan_invalid"
+  }
+]

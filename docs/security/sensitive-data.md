@@ -96,7 +96,9 @@ data.
   membership-inference attacks.
 - Detection does not replace retrieval authorization, tenant isolation, least
   privilege, retention controls, user consent, or restrictions on model-provider
-  training and storage.
+  training and storage. Use the typed
+  [GenAI data lifecycle](data-lifecycle.md) boundary to propagate and enforce
+  purpose, residency, retention, consent, and deletion obligations.
 - Blocking delivery does not prove a credential was never exposed to another
   model, trace, callback, or service. Revoke and rotate credentials that crossed
   an untrusted boundary.

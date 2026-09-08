@@ -100,6 +100,7 @@ nav:
       - RAG security: security/rag-security.md
       - Persistent memory: security/memory-security.md
       - Data and model poisoning: security/data-model-poisoning.md
+      - GenAI data lifecycle: security/data-lifecycle.md
       - Excessive agency: security/excessive-agency.md
       - Agent goal integrity: security/agent-goal-integrity.md
       - Semantic tool authorization: security/tool-misuse.md
