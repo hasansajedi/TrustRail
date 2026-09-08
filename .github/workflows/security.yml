@@ -22,7 +22,12 @@ jobs:
       - name: Install dependencies
         run: pip install -e ".[dev,all]"
       - name: Run audit
-        run: pip-audit --skip-editable
+        # NLTK is transitive through llama-index-core. PYSEC-2026-3740 has no
+        # fixed PyPI release after 3.10.3; trustrail does not call the affected
+        # model-artifact file APIs. Remove this exception when upstream ships a fix.
+        run: >-
+          pip-audit --skip-editable
+          --ignore-vuln PYSEC-2026-3740
 
   security-corpus:
     name: Security Corpus Tests
