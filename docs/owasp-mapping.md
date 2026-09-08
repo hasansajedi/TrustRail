@@ -26,13 +26,14 @@ test against threats specific to your system.
 | OWASP MCP guidance | trustrail controls | Additional controls required |
 | --- | --- | --- |
 | **Tool Description & Schema Integrity** | `MCPToolDefinition` canonicalizes and SHA-256 binds the application-assigned server identity, name, title, description, full input and output schemas, and annotations; `MCPToolDefinitionGuard` scans all nested keys and values, rejects open or undocumented schemas, duplicate/confusable identities, Unicode smuggling, cross-tool references, and hidden instructions | Independent semantic and multilingual review, authenticated server identity, strict runtime argument validation, server implementation review, monitoring, and application-specific red teaming |
-| **Message-Level Integrity and Replay Protection** | HMAC-authenticated discovery and approval bundles bind phase, issue time, reviewer, complete definition digests, and per-field fingerprints; live metadata is re-hashed immediately before execution and content-safe diffs identify changes | Signed JSON-RPC requests and responses, nonce/timestamp replay defense, authenticated asymmetric keys, protected shared snapshot storage, key rotation, and distributed complete mediation |
+| **Message-Level Integrity and Replay Protection** | `MCPMessageEnvelope` and `MCPMessageSigner` use Ed25519 to bind the complete canonical JSON-RPC payload to an out-of-band-pinned sender key, recipient, authenticated user and agent, session, direction, approved tool-definition digest, timestamp, expiry, and nonce; `MCPMessageVerifier` fails closed on unsigned downgrade, invalid keys, signatures, bindings, or freshness, atomically claims bounded replay state, supports mutual request/response signing, and emits content-free audit events; definition discovery and approval bundles separately protect metadata lifecycle state | TLS, authenticated key provisioning, protected private keys, rotation and revocation distribution, a durable shared atomic replay store for multi-worker deployments, clock synchronization, rate limiting, complete mediation of every request and response path, and downstream authorization and output controls remain required |
 | **Consent & Installation Security** | Approval must match the exact signed discovery snapshot; new or safely changed tools return `REQUIRE_APPROVAL`, while poisoned changes are blocked | A trusted consent UI that displays exact definitions, authenticated reviewer identity, secure server installation and source verification, and independent confirmation for sensitive calls |
 | **Multi-Server Isolation & Cross-Origin Protection** | Discovery evaluates the complete exposed tool set and rejects name shadowing, common homoglyphs, and cross-tool references | Per-server credentials and model contexts, explicit data-flow policy, gateway isolation, egress filtering, and downstream authorization |
 
-See [MCP tool-definition integrity](security/mcp-tool-integrity.md) for the
-workflow, configuration, assumptions, and residual risks. This mapping is an
-engineering aid rather than evidence of compliance.
+See [MCP tool-definition integrity](security/mcp-tool-integrity.md) and
+[MCP message integrity](security/mcp-message-integrity.md) for workflows,
+configuration, assumptions, and residual risks. This mapping is an engineering
+aid rather than evidence of compliance.
 
 ## OWASP Top 10 for Agentic Applications 2026
 

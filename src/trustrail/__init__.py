@@ -45,6 +45,7 @@ from trustrail.exceptions import (
     GoalIntegrityError,
     GroundingVerificationError,
     GuardrailBlockedError,
+    MCPMessageVerificationError,
     MCPToolDefinitionError,
     MemoryTaintError,
     OutputHandlingError,
@@ -76,6 +77,14 @@ from trustrail.goal_integrity import (
 from trustrail.grounding import EvidenceGroundingVerifier
 from trustrail.guard import Guard
 from trustrail.mcp import MCPToolDefinitionGuard
+from trustrail.mcp_messages import (
+    MCPMessageAuditSink,
+    MCPMessageSigner,
+    MCPMessageVerifier,
+    MCPReplayStore,
+    MemoryMCPMessageAuditSink,
+    MemoryMCPReplayStore,
+)
 from trustrail.memory import (
     MemoryApprovalVerifier,
     MemoryRebuildHook,
@@ -254,6 +263,18 @@ from trustrail.models.mcp import (
     MCPToolDefinitionPolicy,
     MCPToolDefinitionResult,
     MCPToolFieldFingerprint,
+)
+from trustrail.models.mcp_messages import (
+    MCPMessageAuditEvent,
+    MCPMessageEnvelope,
+    MCPMessageFinding,
+    MCPMessageSigningPolicy,
+    MCPMessageType,
+    MCPMessageVerificationCode,
+    MCPMessageVerificationContext,
+    MCPMessageVerificationResult,
+    MCPReplayClaimStatus,
+    MCPTrustedKey,
 )
 from trustrail.models.memory import (
     AuthorizedMemoryWrite,
@@ -559,6 +580,20 @@ __all__ = [
     "LoggingAuditSink",
     "MCPDefinitionChange",
     "MCPDefinitionChangeKind",
+    "MCPMessageAuditEvent",
+    "MCPMessageAuditSink",
+    "MCPMessageEnvelope",
+    "MCPMessageFinding",
+    "MCPMessageSigner",
+    "MCPMessageSigningPolicy",
+    "MCPMessageType",
+    "MCPMessageVerificationCode",
+    "MCPMessageVerificationContext",
+    "MCPMessageVerificationError",
+    "MCPMessageVerificationResult",
+    "MCPMessageVerifier",
+    "MCPReplayClaimStatus",
+    "MCPReplayStore",
     "MCPToolDefinition",
     "MCPToolDefinitionBundle",
     "MCPToolDefinitionCode",
@@ -569,6 +604,7 @@ __all__ = [
     "MCPToolDefinitionPolicy",
     "MCPToolDefinitionResult",
     "MCPToolFieldFingerprint",
+    "MCPTrustedKey",
     "MemoryApprovalVerifier",
     "MemoryAuditEvent",
     "MemoryAuditSink",
@@ -579,6 +615,8 @@ __all__ = [
     "MemoryFailureContainmentAuditSink",
     "MemoryFinding",
     "MemoryGoalIntegrityAuditSink",
+    "MemoryMCPMessageAuditSink",
+    "MemoryMCPReplayStore",
     "MemoryProvenance",
     "MemoryReadRequest",
     "MemoryRebuildHook",

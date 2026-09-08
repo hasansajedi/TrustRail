@@ -71,6 +71,22 @@ when the live definition changes before execution.
     options:
       members: true
 
+## MCP message integrity
+
+`MCPMessageEnvelope` binds the complete JSON-RPC payload to trusted peer, user,
+agent, recipient, session, direction, approved tool definition, time, and nonce
+state. `MCPMessageSigner` produces Ed25519 envelopes;
+`MCPMessageVerifier` authenticates them and claims replay state before returning
+a defensive payload copy.
+
+::: trustrail.models.mcp_messages
+    options:
+      members: true
+
+::: trustrail.mcp_messages
+    options:
+      members: true
+
 ## Agent goal integrity
 
 Goal manifests bind an authorized objective, constraints, owner, approval

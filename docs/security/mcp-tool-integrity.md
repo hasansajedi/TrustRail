@@ -152,7 +152,8 @@ schema policies increase ambiguity and should have a removal date.
   sensitive effects.
 - Process-local verification cannot guarantee that a remote server executes the
   same implementation described by the definition. Use authenticated transports,
-  signed messages/attestations where available, and independent runtime controls.
+  [signed MCP requests and responses](mcp-message-integrity.md), attestations where
+  available, and independent runtime controls.
 
 See the
 [OWASP MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html#2-tool-description-schema-integrity)

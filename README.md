@@ -154,6 +154,7 @@ trustrail is designed with security-first principles:
 - No eval/exec/pickle
 - Bounded regex processing (no ReDoS)
 - Privacy-preserving audit logs (metadata only, no content)
+- Signed MCP requests and responses with identity binding and replay protection
 - System-prompt values excluded from normal serialization and findings
 - Grounding decisions exclude generated claims and evidence from normal serialization
 - Pre-compiled regex patterns
@@ -171,6 +172,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 - [External Safety Providers](docs/integrations/external-safety-providers.md)
 - [Agent Goal Integrity](docs/security/agent-goal-integrity.md)
 - [MCP Tool-Definition Integrity](docs/security/mcp-tool-integrity.md)
+- [MCP Message Integrity](docs/security/mcp-message-integrity.md)
 - [Security Threat Model](docs/security/threat-model.md)
 
 ## Contributing

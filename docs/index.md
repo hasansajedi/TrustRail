@@ -13,6 +13,7 @@ trustrail provides comprehensive security guardrails for LLM applications. It pr
 - Excessive agent agency
 - Misinformation and unsafe overreliance
 - Resource abuse
+- MCP message tampering and replay
 
 ## Navigation
 

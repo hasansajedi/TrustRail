@@ -165,6 +165,27 @@ combine definition checks with tool authorization, sandboxing, egress controls,
 service-side permissions, runtime attestation, monitoring, and sensitive-action
 confirmation. See [MCP tool-definition integrity](mcp-tool-integrity.md).
 
+### MCP Message Tampering and Replay
+
+- JSON-RPC request or response payloads changed after TLS termination
+- Unsigned downgrade attempts after message signing has been enabled
+- An untrusted or substituted public key used to impersonate a peer
+- Sender, recipient, user, agent, session, request/response direction, or
+  approved tool-definition context rebound across messages
+- Expired, stale, future-dated, duplicate, or nonce-modified messages processed
+- Concurrent consumers racing a non-atomic replay check
+- Invalid signatures poisoning nonce state before a valid message arrives
+- Unbounded replay or audit state causing memory exhaustion
+- Message payloads or raw identity, session, and nonce values leaking into audit
+  events
+
+Signatures provide integrity and attribution relative to a correctly provisioned
+key; they do not provide confidentiality, semantic safety, or authorization.
+Protect and authenticate keys, keep TLS, derive verification context from local
+authenticated state, use a shared atomic replay store across workers, synchronize
+clocks, rate-limit verification, and completely mediate requests and responses.
+See [MCP message integrity](mcp-message-integrity.md).
+
 ### Identity and Privilege Abuse (OWASP ASI03:2026)
 
 - Agents impersonating a user, service, peer agent, or sub-agent by changing an

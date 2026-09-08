@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- OWASP MCP message-level integrity controls with mutually verifiable Ed25519
+  request and response envelopes, authenticated identity, session, and tool
+  bindings, freshness checks, bounded atomic replay protection,
+  unsigned-downgrade rejection, and content-free audit events.
 - OWASP MCP tool-definition integrity controls with complete canonical schema
   pinning, authenticated discovery and approval snapshots, pre-execution rug-pull
   detection, nested metadata scanning, shadowing/confusable-name rejection, and

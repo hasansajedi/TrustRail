@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from trustrail.models.goal import GoalIntegrityResult
     from trustrail.models.grounding import GroundingResult
     from trustrail.models.mcp import MCPToolDefinitionResult
+    from trustrail.models.mcp_messages import MCPMessageVerificationResult
     from trustrail.models.memory import MemoryDecision
     from trustrail.models.output_handling import OutputHandlingResult
     from trustrail.models.poisoning import DataPoisoningResult
@@ -154,6 +155,14 @@ class MCPToolDefinitionError(AegisRailError):
 
     def __init__(self, result: MCPToolDefinitionResult) -> None:
         super().__init__("MCP tool definition was not verified")
+        self.result = result
+
+
+class MCPMessageVerificationError(AegisRailError):
+    """Raised when a signed MCP request or response is not verified."""
+
+    def __init__(self, result: MCPMessageVerificationResult) -> None:
+        super().__init__("MCP message was not verified")
         self.result = result
 
 
