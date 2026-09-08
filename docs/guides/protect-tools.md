@@ -28,6 +28,13 @@ and verify identity, audience, session, definition digest, freshness, and nonce
 state before processing either message. See
 [MCP message integrity and replay protection](../security/mcp-message-integrity.md).
 
+When a host connects multiple MCP servers, place discovery and dispatch behind
+`MCPServerIsolationGateway`. Give each server a unique namespace and credential
+binding, label tool results in trusted adapter code, and declare every permitted
+source-tool to destination-tool edge. The gateway can block, redact, or require
+an exact approval before data crosses the boundary. See
+[MCP server isolation and cross-origin protection](../security/mcp-server-isolation.md).
+
 For function-based tools, the decorator creates the tool context automatically:
 
 ```python

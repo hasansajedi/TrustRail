@@ -152,8 +152,14 @@ should share cross-language conformance vectors before deployment.
   service-side permissions, or human confirmation for sensitive effects.
 
 See [MCP tool-definition integrity](mcp-tool-integrity.md) for discovery,
-approval, and rug-pull protection, and [Protect tool calls](../guides/protect-tools.md)
-for the surrounding execution boundary.
+approval, and rug-pull protection,
+[MCP server isolation](mcp-server-isolation.md) for cross-origin data-flow and
+credential boundaries, and [Protect tool calls](../guides/protect-tools.md) for
+the surrounding execution boundary.
+
+When the host connects multiple servers, apply
+[MCP server isolation](mcp-server-isolation.md) before dispatch; message
+signatures authenticate an envelope but do not authorize cross-origin data flow.
 
 The broader deployment guidance is in the
 [OWASP MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html#7-message-level-integrity-and-replay-protection).

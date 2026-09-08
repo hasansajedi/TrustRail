@@ -14,6 +14,7 @@ trustrail provides comprehensive security guardrails for LLM applications. It pr
 - Misinformation and unsafe overreliance
 - Resource abuse
 - MCP message tampering and replay
+- MCP cross-server tool shadowing, credential crossover, and unauthorized data flows
 
 ## Navigation
 

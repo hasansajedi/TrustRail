@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- OWASP MCP multi-server isolation controls with independent server, namespace,
+  credential, principal, and tool trust domains; explicit labeled data-flow
+  edges; cross-origin instruction and shadowing detection; gateway redaction,
+  approval, resource, and content-free audit hooks.
 - OWASP MCP message-level integrity controls with mutually verifiable Ed25519
   request and response envelopes, authenticated identity, session, and tool
   bindings, freshness checks, bounded atomic replay protection,
