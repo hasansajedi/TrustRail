@@ -29,6 +29,7 @@ trustrail provides comprehensive security guardrails for Large Language Model (L
 - **Data Poisoning Controls** — Quarantine unauthorized, changed, or anomalous AI data and models
 - **Least-Privilege Tool Authorization** — Bind exact tools and arguments to identity, intent, ownership, scopes, approval, and execution budgets
 - **MCP Tool-Definition Integrity** — Scan and cryptographically pin complete tool schemas, reject shadowing, and require renewed consent after mutations
+- **MCP Server Isolation** — Separate server trust domains, credentials, namespaces, and labeled data flows through a fail-closed gateway
 - **Agent Goal Integrity** — Bind plans and delegations to an authorized objective and require exact approval for every material goal change
 - **System Prompt Leakage Controls** — Validate classified prompt construction and block extraction attempts and generated prompt fragments
 - **Evidence-Backed Grounding** — Bind claims and citations to trusted evidence, expose uncertainty, and require review for high-impact advice
@@ -155,6 +156,7 @@ trustrail is designed with security-first principles:
 - Bounded regex processing (no ReDoS)
 - Privacy-preserving audit logs (metadata only, no content)
 - Signed MCP requests and responses with identity binding and replay protection
+- Isolated MCP server trust domains with explicit cross-origin data-flow edges
 - System-prompt values excluded from normal serialization and findings
 - Grounding decisions exclude generated claims and evidence from normal serialization
 - Pre-compiled regex patterns
@@ -173,6 +175,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 - [Agent Goal Integrity](docs/security/agent-goal-integrity.md)
 - [MCP Tool-Definition Integrity](docs/security/mcp-tool-integrity.md)
 - [MCP Message Integrity](docs/security/mcp-message-integrity.md)
+- [MCP Server Isolation](docs/security/mcp-server-isolation.md)
 - [Security Threat Model](docs/security/threat-model.md)
 
 ## Contributing

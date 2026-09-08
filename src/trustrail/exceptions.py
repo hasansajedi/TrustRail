@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from trustrail.models.goal import GoalIntegrityResult
     from trustrail.models.grounding import GroundingResult
     from trustrail.models.mcp import MCPToolDefinitionResult
+    from trustrail.models.mcp_isolation import MCPIsolationResult
     from trustrail.models.mcp_messages import MCPMessageVerificationResult
     from trustrail.models.memory import MemoryDecision
     from trustrail.models.output_handling import OutputHandlingResult
@@ -155,6 +156,14 @@ class MCPToolDefinitionError(AegisRailError):
 
     def __init__(self, result: MCPToolDefinitionResult) -> None:
         super().__init__("MCP tool definition was not verified")
+        self.result = result
+
+
+class MCPIsolationError(AegisRailError):
+    """Raised when an MCP definition or cross-server call violates isolation policy."""
+
+    def __init__(self, result: MCPIsolationResult) -> None:
+        super().__init__("MCP server isolation policy denied the operation")
         self.result = result
 
 

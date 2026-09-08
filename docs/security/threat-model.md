@@ -186,6 +186,30 @@ authenticated state, use a shared atomic replay store across workers, synchroniz
 clocks, rate-limit verification, and completely mediate requests and responses.
 See [MCP message integrity](mcp-message-integrity.md).
 
+### MCP Multi-Server Isolation and Cross-Origin Attacks
+
+- One server declaring, shadowing, or using a confusable version of another
+  server's tool name
+- Tool descriptions or results directing the model to invoke a different
+  server, creating an indirect cross-origin control channel
+- A server-caused call omitting or rebinding its initiating server and tool
+- A confused deputy changing user, agent, tenant, scope, destination, or session
+  context before dispatch
+- Shared or mismatched credentials crossing server trust domains
+- Unlabeled, mislabeled, tampered, or undeclared tool results flowing to another
+  server without an explicit source-tool/destination-tool edge
+- Redaction hooks returning unchanged or substituted data, or approvals being
+  rebound, forged, expired, or replayed
+- Sensitive arguments, results, identities, or credentials leaking through
+  denials and audit logs
+
+Isolation policy depends on trustworthy connection identity, provenance labels,
+principal context, and complete mediation. Use separately scoped credentials,
+preserve causal initiator provenance, authenticate approvals, isolate processes
+and model contexts where appropriate, enforce network egress and downstream
+authorization, and persist access-controlled audit evidence. See
+[MCP server isolation](mcp-server-isolation.md).
+
 ### Identity and Privilege Abuse (OWASP ASI03:2026)
 
 - Agents impersonating a user, service, peer agent, or sub-agent by changing an

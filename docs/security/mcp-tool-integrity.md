@@ -155,6 +155,13 @@ schema policies increase ambiguity and should have a removal date.
   [signed MCP requests and responses](mcp-message-integrity.md), attestations where
   available, and independent runtime controls.
 
+For hosts exposing several servers, also enforce independent ownership,
+credentials, principals, and explicit labeled data flows with
+[MCP server isolation](mcp-server-isolation.md).
+
 See the
 [OWASP MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html#2-tool-description-schema-integrity)
 for the broader deployment guidance.
+
+For hosts that connect more than one server, also enforce
+[MCP server isolation and explicit cross-origin data flows](mcp-server-isolation.md).

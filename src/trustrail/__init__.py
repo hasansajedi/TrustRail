@@ -45,6 +45,7 @@ from trustrail.exceptions import (
     GoalIntegrityError,
     GroundingVerificationError,
     GuardrailBlockedError,
+    MCPIsolationError,
     MCPMessageVerificationError,
     MCPToolDefinitionError,
     MemoryTaintError,
@@ -77,6 +78,14 @@ from trustrail.goal_integrity import (
 from trustrail.grounding import EvidenceGroundingVerifier
 from trustrail.guard import Guard
 from trustrail.mcp import MCPToolDefinitionGuard
+from trustrail.mcp_isolation import (
+    MCPGatewayApprovalVerifier,
+    MCPGatewayRedactor,
+    MCPIsolationAuditSink,
+    MCPServerIsolationGateway,
+    MemoryMCPIsolationAuditSink,
+    StaticMCPGatewayApprovalVerifier,
+)
 from trustrail.mcp_messages import (
     MCPMessageAuditSink,
     MCPMessageSigner,
@@ -264,6 +273,23 @@ from trustrail.models.mcp import (
     MCPToolDefinitionResult,
     MCPToolFieldFingerprint,
 )
+from trustrail.models.mcp_isolation import (
+    AuthorizedMCPGatewayRequest,
+    MCPDataFlowApproval,
+    MCPDataFlowEdge,
+    MCPDataLabel,
+    MCPGatewayPrincipal,
+    MCPGatewayRequest,
+    MCPIsolationAuditEvent,
+    MCPIsolationCode,
+    MCPIsolationFinding,
+    MCPIsolationOperation,
+    MCPIsolationResult,
+    MCPServerIsolationPolicy,
+    MCPServerTrustDomain,
+    MCPToolResultEnvelope,
+    mcp_credential_reference,
+)
 from trustrail.models.mcp_messages import (
     MCPMessageAuditEvent,
     MCPMessageEnvelope,
@@ -435,6 +461,7 @@ __all__ = [
     "AuthorizedCodeExecution",
     "AuthorizedDelegatedAccess",
     "AuthorizedDependencyAttempt",
+    "AuthorizedMCPGatewayRequest",
     "AuthorizedMemoryWrite",
     "AuthorizedPlanStep",
     "AuthorizedToolCall",
@@ -578,8 +605,22 @@ __all__ = [
     "IngestionAuthorization",
     # Audit sinks
     "LoggingAuditSink",
+    "MCPDataFlowApproval",
+    "MCPDataFlowEdge",
+    "MCPDataLabel",
     "MCPDefinitionChange",
     "MCPDefinitionChangeKind",
+    "MCPGatewayApprovalVerifier",
+    "MCPGatewayPrincipal",
+    "MCPGatewayRedactor",
+    "MCPGatewayRequest",
+    "MCPIsolationAuditEvent",
+    "MCPIsolationAuditSink",
+    "MCPIsolationCode",
+    "MCPIsolationError",
+    "MCPIsolationFinding",
+    "MCPIsolationOperation",
+    "MCPIsolationResult",
     "MCPMessageAuditEvent",
     "MCPMessageAuditSink",
     "MCPMessageEnvelope",
@@ -594,6 +635,9 @@ __all__ = [
     "MCPMessageVerifier",
     "MCPReplayClaimStatus",
     "MCPReplayStore",
+    "MCPServerIsolationGateway",
+    "MCPServerIsolationPolicy",
+    "MCPServerTrustDomain",
     "MCPToolDefinition",
     "MCPToolDefinitionBundle",
     "MCPToolDefinitionCode",
@@ -604,6 +648,7 @@ __all__ = [
     "MCPToolDefinitionPolicy",
     "MCPToolDefinitionResult",
     "MCPToolFieldFingerprint",
+    "MCPToolResultEnvelope",
     "MCPTrustedKey",
     "MemoryApprovalVerifier",
     "MemoryAuditEvent",
@@ -615,6 +660,7 @@ __all__ = [
     "MemoryFailureContainmentAuditSink",
     "MemoryFinding",
     "MemoryGoalIntegrityAuditSink",
+    "MemoryMCPIsolationAuditSink",
     "MemoryMCPMessageAuditSink",
     "MemoryMCPReplayStore",
     "MemoryProvenance",
@@ -697,6 +743,7 @@ __all__ = [
     "StaticDelegatedAccessGrantVerifier",
     "StaticDelegatedCapabilityVerifier",
     "StaticGoalApprovalVerifier",
+    "StaticMCPGatewayApprovalVerifier",
     "StaticSandboxAttestationVerifier",
     "StaticToolApprovalVerifier",
     "SystemPromptDataClass",
@@ -769,4 +816,5 @@ __all__ = [
     "VerifiedExecutionOutput",
     # Version
     "__version__",
+    "mcp_credential_reference",
 ]

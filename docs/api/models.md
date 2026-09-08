@@ -87,6 +87,22 @@ a defensive payload copy.
     options:
       members: true
 
+## MCP server isolation
+
+`MCPServerIsolationPolicy` defines independent server, namespace, credential,
+principal, tool, and data-flow boundaries. `MCPServerIsolationGateway` jointly
+inspects definition inventories and completely mediates calls using
+integrity-bound, source-labeled results, explicit edges, redaction and approval
+hooks, and content-free audit evidence.
+
+::: trustrail.models.mcp_isolation
+    options:
+      members: true
+
+::: trustrail.mcp_isolation
+    options:
+      members: true
+
 ## Agent goal integrity
 
 Goal manifests bind an authorized objective, constraints, owner, approval
