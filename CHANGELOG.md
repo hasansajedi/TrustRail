@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- OWASP MCP tool-definition integrity controls with complete canonical schema
+  pinning, authenticated discovery and approval snapshots, pre-execution rug-pull
+  detection, nested metadata scanning, shadowing/confusable-name rejection, and
+  content-free definition diffs that require renewed consent.
 - First-class async rules and external moderation, prompt-injection, sensitive-data,
   and grounding providers with deterministic execution order, bounded concurrency,
   per-check deadlines, cancellation, and explicit fail-open/fail-closed behavior.

@@ -45,6 +45,7 @@ from trustrail.exceptions import (
     GoalIntegrityError,
     GroundingVerificationError,
     GuardrailBlockedError,
+    MCPToolDefinitionError,
     MemoryTaintError,
     OutputHandlingError,
     ProviderError,
@@ -74,6 +75,7 @@ from trustrail.goal_integrity import (
 )
 from trustrail.grounding import EvidenceGroundingVerifier
 from trustrail.guard import Guard
+from trustrail.mcp import MCPToolDefinitionGuard
 from trustrail.memory import (
     MemoryApprovalVerifier,
     MemoryRebuildHook,
@@ -240,6 +242,18 @@ from trustrail.models.grounding import (
     HumanReviewDecision,
     HumanReviewGrant,
     ImpactDomain,
+)
+from trustrail.models.mcp import (
+    MCPDefinitionChange,
+    MCPDefinitionChangeKind,
+    MCPToolDefinition,
+    MCPToolDefinitionBundle,
+    MCPToolDefinitionCode,
+    MCPToolDefinitionFinding,
+    MCPToolDefinitionPhase,
+    MCPToolDefinitionPolicy,
+    MCPToolDefinitionResult,
+    MCPToolFieldFingerprint,
 )
 from trustrail.models.memory import (
     AuthorizedMemoryWrite,
@@ -543,6 +557,18 @@ __all__ = [
     "IngestionAuthorization",
     # Audit sinks
     "LoggingAuditSink",
+    "MCPDefinitionChange",
+    "MCPDefinitionChangeKind",
+    "MCPToolDefinition",
+    "MCPToolDefinitionBundle",
+    "MCPToolDefinitionCode",
+    "MCPToolDefinitionError",
+    "MCPToolDefinitionFinding",
+    "MCPToolDefinitionGuard",
+    "MCPToolDefinitionPhase",
+    "MCPToolDefinitionPolicy",
+    "MCPToolDefinitionResult",
+    "MCPToolFieldFingerprint",
     "MemoryApprovalVerifier",
     "MemoryAuditEvent",
     "MemoryAuditSink",

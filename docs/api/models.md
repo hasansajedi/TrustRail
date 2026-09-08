@@ -56,6 +56,21 @@ postcondition evidence before the chain can continue.
     options:
       members: true
 
+## MCP tool-definition integrity
+
+MCP definition models bind complete model-visible metadata to signed discovery
+and approval snapshots. `MCPToolDefinitionGuard` scans definitions together,
+detects ambiguous or shadowing identities, and emits content-free field diffs
+when the live definition changes before execution.
+
+::: trustrail.models.mcp
+    options:
+      members: true
+
+::: trustrail.mcp.MCPToolDefinitionGuard
+    options:
+      members: true
+
 ## Agent goal integrity
 
 Goal manifests bind an authorized objective, constraints, owner, approval
