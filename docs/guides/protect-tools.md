@@ -23,6 +23,11 @@ raw_result = await execute_tool(call)
 safe_result = await guard.aprotect(str(raw_result), GuardStage.TOOL_RESPONSE)
 ```
 
+For remote MCP boundaries, also sign the complete JSON-RPC request and response
+and verify identity, audience, session, definition digest, freshness, and nonce
+state before processing either message. See
+[MCP message integrity and replay protection](../security/mcp-message-integrity.md).
+
 For function-based tools, the decorator creates the tool context automatically:
 
 ```python

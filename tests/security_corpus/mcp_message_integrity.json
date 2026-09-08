@@ -1,0 +1,56 @@
+[
+  {
+    "id": "payload_method_substitution",
+    "mutation": "payload",
+    "value": "admin/delete-all",
+    "expected_code": "signature_invalid"
+  },
+  {
+    "id": "recipient_rebinding",
+    "mutation": "recipient_id",
+    "value": "attacker-server",
+    "expected_code": "recipient_mismatch"
+  },
+  {
+    "id": "user_rebinding",
+    "mutation": "user_id",
+    "value": "privileged-user",
+    "expected_code": "user_mismatch"
+  },
+  {
+    "id": "agent_rebinding",
+    "mutation": "agent_id",
+    "value": "privileged-agent",
+    "expected_code": "agent_mismatch"
+  },
+  {
+    "id": "session_rebinding",
+    "mutation": "session_id",
+    "value": "other-session",
+    "expected_code": "session_mismatch"
+  },
+  {
+    "id": "tool_definition_rebinding",
+    "mutation": "tool_definition_digest",
+    "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "expected_code": "tool_definition_mismatch"
+  },
+  {
+    "id": "request_response_confusion",
+    "mutation": "message_type",
+    "value": "response",
+    "expected_code": "message_type_mismatch"
+  },
+  {
+    "id": "unsigned_downgrade",
+    "mutation": "signature",
+    "value": null,
+    "expected_code": "unsigned_message"
+  },
+  {
+    "id": "nonce_tampering",
+    "mutation": "nonce",
+    "value": "attacker_nonce_1234567890",
+    "expected_code": "signature_invalid"
+  }
+]
