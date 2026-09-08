@@ -151,9 +151,11 @@ IDs, or vector-store metadata.
   authenticity proof if an attacker can rewrite both data and catalog. Protect
   the catalog with storage authorization, immutable versions, signed
   attestations where appropriate, and independent audit trails.
-- The library verifies logical tenant namespaces but cannot configure physical
-  vector-database partitions, encryption, service credentials, network policy,
-  backups, or deletion. Enforce those controls at the store.
+- The vector workflow verifies logical tenant namespaces but cannot configure
+  physical vector-database partitions, encryption, service credentials, network
+  policy, backups, or deletion. Apply
+  [GenAI data lifecycle](data-lifecycle.md) records to documents, chunks, and
+  embeddings, and enforce the resulting connector actions at the store.
 - Embeddings can leak source information through inversion attacks. Excluding
   vectors from serialization reduces accidental disclosure but does not protect
   process memory or the vector provider. Minimize retention and access, encrypt

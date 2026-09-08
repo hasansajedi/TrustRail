@@ -232,6 +232,9 @@ in a restricted review system with retention limits.
 - Keep tenant-isolated indexes, least-privilege storage, restricted network
   egress, dataset version control, rollback, quarantine, and index rebuild
   procedures outside the library.
+- After source admission, use [GenAI data lifecycle](data-lifecycle.md) records
+  to carry purpose, residency, retention, training-consent, hold, and deletion
+  obligations into datasets, indexes, derived artifacts, and model workflows.
 
 These controls implement important mitigations from
 [OWASP LLM04:2025 Data and Model Poisoning](https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/),

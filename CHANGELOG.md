@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- GenAI data-lifecycle controls with integrity-bound classification, purpose,
+  residency, retention, training-consent, legal-hold, subject, storage, and
+  derivation labels; fail-closed use authorization; cascading tombstone-first
+  deletion plans; connector receipts and deletion verification; and content-free
+  audit evidence.
 - OWASP MCP multi-server isolation controls with independent server, namespace,
   credential, principal, and tool trust domains; explicit labeled data-flow
   edges; cross-origin instruction and shadowing detection; gateway redaction,

@@ -13,6 +13,20 @@
 - Credential and private-key leakage
 - Verbatim disclosure of application-defined private context
 - Accidental content disclosure through findings, audit events, and integration logs
+- Reuse outside the collected purpose, permitted residency, retention deadline,
+  or training-consent state
+- Lifecycle labels lost or weakened across prompts, output, RAG, embeddings,
+  caches, traces, logs, memory, datasets, and derived model artifacts
+- Source deletion that leaves untracked derivatives, replicas, backups, or
+  externally retained copies available
+
+`DataLifecycleManager` integrity-binds lifecycle labels and lineage, denies
+incompatible use, cascades deletion planning, tombstones before connector
+deletion, and requires bound verification evidence. Correct label issuance,
+complete mediation, durable distributed state, external-store guarantees,
+backup reconciliation, and model unlearning or retraining remain application,
+infrastructure, provider, and governance responsibilities. See
+[GenAI data lifecycle and verified deletion](data-lifecycle.md).
 
 ### Supply Chain (OWASP LLM03)
 - Unknown, unapproved, untrusted, deprecated, or revoked AI components

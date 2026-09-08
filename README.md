@@ -27,6 +27,7 @@ trustrail provides comprehensive security guardrails for Large Language Model (L
 - **Secure Vector Retrieval** — Enforce tenant/user/resource access, embedding lineage, similarity integrity, and duplicate controls
 - **AI Supply-Chain Verification** — Pin provenance, revisions, and cryptographic artifact digests
 - **Data Poisoning Controls** — Quarantine unauthorized, changed, or anomalous AI data and models
+- **GenAI Data Lifecycle** — Propagate purpose, residency, retention, consent, and deletion obligations across derived artifacts
 - **Least-Privilege Tool Authorization** — Bind exact tools and arguments to identity, intent, ownership, scopes, approval, and execution budgets
 - **MCP Tool-Definition Integrity** — Scan and cryptographically pin complete tool schemas, reject shadowing, and require renewed consent after mutations
 - **MCP Server Isolation** — Separate server trust domains, credentials, namespaces, and labeled data flows through a fail-closed gateway
@@ -159,6 +160,7 @@ trustrail is designed with security-first principles:
 - Isolated MCP server trust domains with explicit cross-origin data-flow edges
 - System-prompt values excluded from normal serialization and findings
 - Grounding decisions exclude generated claims and evidence from normal serialization
+- Lifecycle decisions deny metadata downgrades and tombstone data before verified deletion
 - Pre-compiled regex patterns
 
 See [SECURITY.md](SECURITY.md) for vulnerability reporting.
@@ -176,6 +178,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 - [MCP Tool-Definition Integrity](docs/security/mcp-tool-integrity.md)
 - [MCP Message Integrity](docs/security/mcp-message-integrity.md)
 - [MCP Server Isolation](docs/security/mcp-server-isolation.md)
+- [GenAI Data Lifecycle and Verified Deletion](docs/security/data-lifecycle.md)
 - [Security Threat Model](docs/security/threat-model.md)
 
 ## Contributing

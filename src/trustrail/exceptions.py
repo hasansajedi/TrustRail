@@ -10,6 +10,11 @@ if TYPE_CHECKING:
         CodeExecutionDecision,
         CodeExecutionOutcome,
     )
+    from trustrail.models.data_lifecycle import (
+        DataDeletionPlanResult,
+        DataDeletionResult,
+        DataLifecycleDecision,
+    )
     from trustrail.models.delegated_identity import DelegatedAccessResult
     from trustrail.models.failure_containment import FailureContainmentResult
     from trustrail.models.goal import GoalIntegrityResult
@@ -78,6 +83,17 @@ class DataPoisoningError(AegisRailError):
 
     def __init__(self, result: DataPoisoningResult) -> None:
         super().__init__("Data asset failed poisoning controls and was quarantined")
+        self.result = result
+
+
+class DataLifecycleError(AegisRailError):
+    """Raised when a lifecycle, use, or deletion operation is denied."""
+
+    def __init__(
+        self,
+        result: DataLifecycleDecision | DataDeletionPlanResult | DataDeletionResult,
+    ) -> None:
+        super().__init__("Data lifecycle operation was not authorized or completed")
         self.result = result
 
 
