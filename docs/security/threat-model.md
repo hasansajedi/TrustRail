@@ -147,6 +147,24 @@ adapters, shared atomic execution history, conditional writes, idempotency,
 service-side authorization, value and egress limits, and human review for
 high-impact operations. See [semantic tool authorization](tool-misuse.md).
 
+### MCP Tool Poisoning, Shadowing, and Rug Pulls
+
+- Model-directed instructions hidden in tool descriptions, schema keys or
+  values, annotations, and result schemas
+- Invisible Unicode channels and confusable names disguising malicious tools
+- Duplicate names and cross-tool references shadowing another server's tools
+- Open-ended or undocumented schemas creating ambiguous behavior
+- Tool metadata changing between discovery, consent, and execution
+- Forged or modified discovery and approval snapshots
+- Malicious definition content leaking through diffs, findings, or logs
+
+Definition hashes prove equality with reviewed metadata, not server identity,
+implementation integrity, or semantic safety. Protect signing keys and snapshot
+storage, authenticate the server and reviewer, mediate every execution path, and
+combine definition checks with tool authorization, sandboxing, egress controls,
+service-side permissions, runtime attestation, monitoring, and sensitive-action
+confirmation. See [MCP tool-definition integrity](mcp-tool-integrity.md).
+
 ### Identity and Privilege Abuse (OWASP ASI03:2026)
 
 - Agents impersonating a user, service, peer agent, or sub-agent by changing an

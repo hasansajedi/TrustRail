@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from trustrail.models.failure_containment import FailureContainmentResult
     from trustrail.models.goal import GoalIntegrityResult
     from trustrail.models.grounding import GroundingResult
+    from trustrail.models.mcp import MCPToolDefinitionResult
     from trustrail.models.memory import MemoryDecision
     from trustrail.models.output_handling import OutputHandlingResult
     from trustrail.models.poisoning import DataPoisoningResult
@@ -145,6 +146,14 @@ class ToolAuthorizationError(AegisRailError):
 
     def __init__(self, result: ToolAuthorizationResult) -> None:
         super().__init__("Tool invocation was not authorized")
+        self.result = result
+
+
+class MCPToolDefinitionError(AegisRailError):
+    """Raised when MCP tool metadata is unsafe, changed, or not approved."""
+
+    def __init__(self, result: MCPToolDefinitionResult) -> None:
+        super().__init__("MCP tool definition was not verified")
         self.result = result
 
 

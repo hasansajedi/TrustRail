@@ -83,3 +83,10 @@ be released by `complete()`. See
 [semantic tool authorization](../security/tool-misuse.md).
 Also enforce least-privilege credentials, network egress, timeouts, quotas, and
 resource ownership in the downstream service.
+
+For MCP tools, validate the definition itself before applying call-level
+authorization. Capture a signed discovery snapshot, bind explicit consent to the
+unchanged snapshot, and call `MCPToolDefinitionGuard.require_execution()` with
+the live definition immediately before each dispatch. See
+[MCP tool-definition integrity](../security/mcp-tool-integrity.md) for the full
+workflow, configuration, and residual risks.
