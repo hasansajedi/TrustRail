@@ -21,6 +21,22 @@ Coverage depends on the selected `GuardStage`, configuration, custom rules, and
 application enforcement. Review the [threat model](security/threat-model.md) and
 test against threats specific to your system.
 
+## OWASP AI Testing Guide v1 release gates
+
+| Testing Guide layer | Campaign coverage | Additional controls required |
+| --- | --- | --- |
+| **AI Application Testing** | `AITestLayer.APPLICATION` versions application attacks and controls, runs repetitions with bounded budgets, and gates explicit point-estimate or confidence-aware thresholds | Application-specific assertions, representative user journeys, authenticated test environments, and manual exploratory testing |
+| **AI Model Testing** | `AITestLayer.MODEL` binds evidence to provider, model revision, configuration digest, optional deterministic seeds, and per-case outcomes | Provider/version-specific behavioral, robustness, bias, privacy, and safety tests; seed support does not make model revisions equivalent |
+| **AI Infrastructure Testing** | `AITestLayer.INFRASTRUCTURE` records deployment revision and supports isolation, egress, resource, and deployment-control probes through an application adapter | Hardened external probes, infrastructure attestations, authorization, network enforcement, and environment isolation |
+| **AI Data Testing** | `AITestLayer.DATA` records corpus and data revisions and supports poisoning, provenance, privacy, and retrieval-integrity assertions | Protected representative datasets, lawful handling, independent provenance, drift analysis, and corpus governance |
+| **Repeatability and release comparison** | `AITestCampaignRunner` records configuration/corpus digests, repetitions, Wilson confidence intervals, error/attack budgets, stable IDs, limitations, and payload-free integrity-bound evidence; authenticated baselines block statistical or critical security regressions | Protected or signed baseline approval, CI artifact retention, key management, review of threshold changes, and continued red teaming |
+
+This implements evaluation orchestration aligned with the
+[OWASP AI Testing Guide](https://owasp.org/www-project-ai-testing-guide/); it does
+not claim that the example corpus implements every OWASP test or that a passing
+run is certification. See [AI trustworthiness release gates](guides/ai-testing-release-gates.md)
+for configuration, assumptions, and residual risks.
+
 ## OWASP GenAI data security and AISVS lifecycle controls
 
 | Data-security objective | trustrail controls | Additional controls required |

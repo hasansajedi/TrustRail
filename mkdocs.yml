@@ -77,6 +77,7 @@ nav:
       - Protect agents: guides/protect-agents.md
       - Protect persistent memory: guides/protect-memory.md
       - Adaptive red-team gates: guides/red-team-gates.md
+      - AI testing release gates: guides/ai-testing-release-gates.md
       - Protect tools: guides/protect-tools.md
       - Protect streaming output: guides/protect-streaming.md
       - Rate limiting: guides/rate-limiting.md

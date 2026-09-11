@@ -18,6 +18,12 @@
     options:
       members: true
 
+## AI trustworthiness campaigns
+
+::: trustrail.testing.campaign
+    options:
+      members: true
+
 ## Audit sinks
 
 ::: trustrail.audit.sinks
