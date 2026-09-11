@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from trustrail.models.mcp import MCPToolDefinitionResult
     from trustrail.models.mcp_isolation import MCPIsolationResult
     from trustrail.models.mcp_messages import MCPMessageVerificationResult
+    from trustrail.models.mcp_onboarding import MCPServerOnboardingResult
     from trustrail.models.memory import MemoryDecision
     from trustrail.models.output_handling import OutputHandlingResult
     from trustrail.models.poisoning import DataPoisoningResult
@@ -180,6 +181,14 @@ class MCPIsolationError(AegisRailError):
 
     def __init__(self, result: MCPIsolationResult) -> None:
         super().__init__("MCP server isolation policy denied the operation")
+        self.result = result
+
+
+class MCPServerOnboardingError(AegisRailError):
+    """Raised when an MCP server installation or connection is not authorized."""
+
+    def __init__(self, result: MCPServerOnboardingResult) -> None:
+        super().__init__("MCP server onboarding was not authorized")
         self.result = result
 
 

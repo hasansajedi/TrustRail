@@ -547,6 +547,61 @@ limits to the smallest values supported by the workflow, and retain exact
 constraint binding unless an application-specific design documents why partial
 binding is safe. See [agent goal integrity](security/agent-goal-integrity.md).
 
+## MCP server onboarding policy
+
+MCP installation and connection policy is independent from text-stage
+`GuardConfig`. Use a closed, reviewed inventory and keep it in application-owned
+configuration:
+
+```python
+from trustrail import (
+    MCPApprovedServerPolicy,
+    MCPServerOnboardingPolicy,
+    MCPServerSandboxControl,
+    MCPServerTransportKind,
+)
+
+mcp_onboarding_policy = MCPServerOnboardingPolicy(
+    approved_servers=(
+        MCPApprovedServerPolicy(
+            server_id="filesystem-production",
+            publisher_id="reviewed-publisher",
+            publisher_verification_refs=frozenset({f"sha256:{'d' * 64}"}),
+            package_name="@example/mcp-filesystem",
+            source_uri_prefixes=("https://registry.example/mcp",),
+            allowed_versions=frozenset({"1.2.0"}),
+            allowed_revisions=frozenset({"release-1.2.0"}),
+            allowed_artifact_digests=frozenset({"a" * 64}),
+            allowed_executables=frozenset({"/opt/mcp/filesystem"}),
+            allowed_transports=frozenset({MCPServerTransportKind.STDIO}),
+            allowed_scopes=frozenset({"files.read"}),
+            readable_path_prefixes=frozenset({"/srv/approved-documents"}),
+            allowed_sandbox_profiles=frozenset({"mcp-restricted"}),
+            required_sandbox_controls=frozenset(
+                {
+                    MCPServerSandboxControl.PROCESS_ISOLATION,
+                    MCPServerSandboxControl.FILESYSTEM_POLICY,
+                    MCPServerSandboxControl.NETWORK_POLICY,
+                }
+            ),
+        ),
+    ),
+    trusted_publisher_ids=frozenset({"reviewed-publisher"}),
+    require_publisher_verification=True,
+    require_source_digest=True,
+    require_local_sandbox_attestation=True,
+    allow_non_loopback_bind=False,
+    consent_ttl_seconds=600,
+    permit_ttl_seconds=3600,
+)
+```
+
+Keep source prefixes narrow, executable paths exact, filesystem and network
+allowlists empty unless required, and permits short-lived. Secret policy contains
+only names; manifests carry one-way secret-record references and delivery
+declarations. See [MCP server onboarding](security/mcp-server-onboarding.md) for
+the consent, sandbox attestation, and external admission-hook lifecycle.
+
 ## Destination-aware output policy
 
 `OutputHandlingPolicy` is separate from `GuardConfig` because it describes where

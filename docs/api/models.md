@@ -87,6 +87,22 @@ a defensive payload copy.
     options:
       members: true
 
+## MCP server onboarding
+
+`MCPServerManifest` declares publisher, pinned source and version, exact command,
+transport, filesystem, network, secret references, scopes, and sandbox needs.
+`MCPServerOnboardingGuard` binds those capabilities to explicit consent,
+external sandbox evidence, optional deployment policy, and a short-lived permit
+that is rechecked before connection.
+
+::: trustrail.models.mcp_onboarding
+    options:
+      members: true
+
+::: trustrail.mcp_onboarding
+    options:
+      members: true
+
 ## MCP server isolation
 
 `MCPServerIsolationPolicy` defines independent server, namespace, credential,
