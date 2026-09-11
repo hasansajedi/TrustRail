@@ -1,0 +1,104 @@
+[
+  {
+    "id": "web_triggered_install",
+    "mutation": "origin",
+    "value": "web_content",
+    "expected_code": "origin_denied"
+  },
+  {
+    "id": "model_triggered_install",
+    "mutation": "origin",
+    "value": "model_output",
+    "expected_code": "origin_denied"
+  },
+  {
+    "id": "unverified_publisher",
+    "mutation": "publisher_verification",
+    "value": "missing-verification",
+    "expected_code": "publisher_unverified"
+  },
+  {
+    "id": "publisher_identity_swap",
+    "mutation": "publisher_id",
+    "value": "attacker-publisher",
+    "expected_code": "publisher_mismatch"
+  },
+  {
+    "id": "plaintext_package_source",
+    "mutation": "source_uri",
+    "value": "http://registry.example/packages/acme-search",
+    "expected_code": "source_insecure"
+  },
+  {
+    "id": "source_prefix_confusion",
+    "mutation": "source_uri",
+    "value": "https://registry.example/packages-evil/acme-search",
+    "expected_code": "source_not_approved"
+  },
+  {
+    "id": "unapproved_release_digest",
+    "mutation": "artifact_digest",
+    "value": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "expected_code": "source_digest_mismatch"
+  },
+  {
+    "id": "unapproved_release_version",
+    "mutation": "version",
+    "value": "9.9.9",
+    "expected_code": "source_version_denied"
+  },
+  {
+    "id": "source_url_credentials",
+    "mutation": "source_uri",
+    "value": "https://user:password@registry.example/packages/acme-search",
+    "expected_code": "plaintext_credential"
+  },
+  {
+    "id": "transposed_package_typosquat",
+    "mutation": "package_name",
+    "value": "acme-mcp-searhc",
+    "expected_code": "typosquatting_suspected"
+  },
+  {
+    "id": "command_line_token",
+    "mutation": "command_argument",
+    "value": "--api-key=plaintext-credential",
+    "expected_code": "plaintext_credential"
+  },
+  {
+    "id": "non_loopback_listener",
+    "mutation": "bind_host",
+    "value": "0.0.0.0",
+    "expected_code": "unsafe_bind_address"
+  },
+  {
+    "id": "oauth_scope_growth",
+    "mutation": "scope",
+    "value": "admin.write",
+    "expected_code": "scope_denied"
+  },
+  {
+    "id": "filesystem_escape",
+    "mutation": "read_path",
+    "value": "/etc/shadow",
+    "expected_code": "filesystem_access_denied"
+  },
+  {
+    "id": "undeclared_network_egress",
+    "mutation": "network_host",
+    "value": "evil.example",
+    "expected_code": "network_access_denied"
+  },
+  {
+    "id": "undeclared_secret",
+    "mutation": "secret_name",
+    "value": "ROOT_TOKEN",
+    "expected_code": "secret_access_denied"
+  },
+  {
+    "id": "weakened_sandbox",
+    "mutation": "sandbox_controls",
+    "value": "process_isolation",
+    "expected_code": "sandbox_control_missing"
+  }
+]
