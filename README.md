@@ -40,6 +40,7 @@ trustrail provides comprehensive security guardrails for Large Language Model (L
 - **Streaming Support** — Real-time cross-chunk pattern detection
 - **Audit & Observability** — Structured audit events, OpenTelemetry integration
 - **Async Safety Providers** — Await moderation, DLP, prompt-injection, and grounding checks with bounded concurrency, deadlines, and fail modes
+- **Adversarial Release Gates** — Run versioned OWASP-layer campaigns with seeded repetitions, confidence thresholds, approved baselines, and content-safe evidence
 
 ## Installation
 
@@ -182,6 +183,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 - [MCP Server Onboarding](docs/security/mcp-server-onboarding.md)
 - [MCP Server Isolation](docs/security/mcp-server-isolation.md)
 - [GenAI Data Lifecycle and Verified Deletion](docs/security/data-lifecycle.md)
+- [AI Trustworthiness Release Gates](docs/guides/ai-testing-release-gates.md)
 - [Security Threat Model](docs/security/threat-model.md)
 
 ## Contributing
