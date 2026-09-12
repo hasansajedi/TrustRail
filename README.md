@@ -27,6 +27,7 @@ trustrail provides comprehensive security guardrails for Large Language Model (L
 - **Secure Vector Retrieval** — Enforce tenant/user/resource access, embedding lineage, similarity integrity, and duplicate controls
 - **AI Supply-Chain Verification** — Pin provenance, revisions, and cryptographic artifact digests
 - **Data Poisoning Controls** — Quarantine unauthorized, changed, or anomalous AI data and models
+- **Training-Data Governance** — Minimize features, protect label integrity and approval, evaluate automated-label quality, and gate aggregate bias metrics
 - **GenAI Data Lifecycle** — Propagate purpose, residency, retention, consent, and deletion obligations across derived artifacts
 - **Least-Privilege Tool Authorization** — Bind exact tools and arguments to identity, intent, ownership, scopes, approval, and execution budgets
 - **MCP Tool-Definition Integrity** — Scan and cryptographically pin complete tool schemas, reject shadowing, and require renewed consent after mutations
@@ -183,6 +184,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 - [MCP Server Onboarding](docs/security/mcp-server-onboarding.md)
 - [MCP Server Isolation](docs/security/mcp-server-isolation.md)
 - [GenAI Data Lifecycle and Verified Deletion](docs/security/data-lifecycle.md)
+- [Training-Data Labeling Integrity and Bias Evaluation](docs/security/training-data-governance.md)
 - [AI Trustworthiness Release Gates](docs/guides/ai-testing-release-gates.md)
 - [Security Threat Model](docs/security/threat-model.md)
 
