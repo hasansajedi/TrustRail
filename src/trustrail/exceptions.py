@@ -32,6 +32,10 @@ if TYPE_CHECKING:
         SystemPromptLeakageResult,
         SystemPromptValidationResult,
     )
+    from trustrail.models.training_data import (
+        BiasEvidenceReport,
+        TrainingDataGovernanceResult,
+    )
     from trustrail.models.vector import VectorVerificationResult
 
 from trustrail.models.enums import GuardStage, Severity
@@ -84,6 +88,22 @@ class DataPoisoningError(AegisRailError):
 
     def __init__(self, result: DataPoisoningResult) -> None:
         super().__init__("Data asset failed poisoning controls and was quarantined")
+        self.result = result
+
+
+class TrainingDataGovernanceError(AegisRailError):
+    """Raised when a dataset fails feature, label, or quality controls."""
+
+    def __init__(self, result: TrainingDataGovernanceResult) -> None:
+        super().__init__("Training dataset failed governance controls")
+        self.result = result
+
+
+class BiasEvaluationError(AegisRailError):
+    """Raised when aggregate group metrics fail the approved bias policy."""
+
+    def __init__(self, result: BiasEvidenceReport) -> None:
+        super().__init__("Bias evaluation did not meet approval thresholds")
         self.result = result
 
 

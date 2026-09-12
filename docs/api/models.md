@@ -240,6 +240,20 @@ checks that evidence against trusted source policy and emits content-free result
     options:
       members: true
 
+## Training-data labeling integrity and bias
+
+Training-data policy models approve the necessary features, sensitive handling,
+label writers and approvers, transformation implementations, annotation-set
+digest, quality thresholds, and provider-neutral bias comparisons.
+
+::: trustrail.models.training_data
+    options:
+      members: true
+
+::: trustrail.training_data
+    options:
+      members: true
+
 ## GenAI data lifecycle
 
 Lifecycle models bind classification, purpose, residency, retention, training

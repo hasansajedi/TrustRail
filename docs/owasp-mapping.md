@@ -54,6 +54,26 @@ compliance evidence. See
 [GenAI data lifecycle and verified deletion](security/data-lifecycle.md) for the
 workflow, connector contract, guarantee levels, and residual risks.
 
+## OWASP AISVS C1 training-data integrity and traceability
+
+| AISVS C1 objective | trustrail controls | Additional controls required |
+| --- | --- | --- |
+| **C1.1.1 Feature minimization** | `DatasetFeaturePolicy` approves only purpose-required feature IDs and binds personal/sensitive features to exclusion, redaction, anonymization, or encryption; `TrainingDatasetManifest` declares the effective feature set and intended purpose | Authoritative data discovery/classification, necessity review, lawful basis, minimization within feature values, and downstream enforcement in training code |
+| **C1.1.2–C1.1.4 Inventory and integrity** | Existing provenance and lifecycle records inventory source/purpose/history; `TrainingDatasetManifest` binds an immutable dataset version, source/output digests, and an integrity-linked chain of approved transformation versions and actors | Authenticated storage/transport, durable inventory, license/collection governance, signed attestations, protected policy state, and continuous integrity monitoring |
+| **C1.2.1 Annotation access control** | `TrainingDatasetPolicy` allowlists label writers and approvers; the verifier requires approval, can prohibit self-approval, and excludes identities and raw labels from findings/evidence | Labeling-platform authentication, least privilege, session security, revocation, separation of duties, and durable audit logs |
+| **C1.2.2 Label integrity** | Each `TrainingAnnotation` binds canonical label bytes to a digest; `approved_annotation_set_digest` separately pins ordered label hashes, sample references, origin, writer, approver, confidence, and handling in trusted policy | Protected signing keys/policy store, authenticated contributors, immutable object storage, backup integrity, and incident response |
+| **C1.2.3 Sensitive labels** | Dataset features and labels declare sensitivity-aware handling; unsafe plain or unapproved handling is quarantined, while content-free results omit label values | Actual encryption/redaction/anonymization enforcement, key management, access monitoring, re-identification testing, retention/deletion, and privacy review |
+| **C1.3.1 and C1.3.4 Poisoning/disallowed content** | `DataPoisoningVerifier` scans provenance, authorization, anomaly signals, content, and nested metadata before governed labeling admission | Domain-specific content classifiers, statistical poisoning analysis, sandboxed inspection, human review, and independent clean data |
+| **C1.3.2 Automated-label quality** | Automated/synthetic labels require confidence; application hooks return bounded consistency and clean-label scores and fail closed on absence/errors | Calibrated confidence, representative held-out labels, multiple independent reviewers/models, drift monitoring, and adjudication |
+| **C1.3.3 Bias evaluation** | `BiasEvaluationRequest` accepts provider-neutral aggregate group metrics; per-metric sample, absolute-gap, and parity-ratio thresholds produce content-safe `BiasEvidenceReport` records | Domain- and jurisdiction-appropriate fairness definitions, intersectional analysis, privacy controls, qualified review, remediation, and production outcome monitoring |
+| **C1.3.5 Clean-label poisoning** | Quality hooks gate normalized clean-label risk scores and preserve only evaluator IDs and evidence digests in results | Adversarial/domain-specific detectors, influence/outlier analysis, contributor reputation, retraining tests, and ongoing backdoor-trigger evaluation |
+| **Governed exceptions** | `BiasExceptionGrant` binds a justification and approval digest to one evaluation/metric/group and is honored only while unexpired and authenticated by an external verifier | Non-spoofable approval UX, signed grants, revocation/shared replay state, monitoring, appeals, and periodic reassessment |
+
+See [training-data labeling integrity and bias evaluation](security/training-data-governance.md)
+for configuration and residual risks. This is an engineering mapping to
+[OWASP AISVS C1](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C01-Training-Data-Integrity-and-Traceability.md),
+not certification or a claim that a dataset or model is unbiased.
+
 ## OWASP MCP Security Cheat Sheet
 
 | OWASP MCP guidance | trustrail controls | Additional controls required |

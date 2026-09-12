@@ -1,0 +1,41 @@
+{
+  "evaluation_id": "credit-model-release-9",
+  "subject_ref": {
+    "algorithm": "sha256",
+    "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "metrics": [
+    {
+      "metric_id": "approval-rate",
+      "metric_kind": "selection_rate",
+      "reference_group_id": "reference-group",
+      "groups": [
+        {"group_id": "reference-group", "sample_count": 250, "value": 0.82},
+        {"group_id": "evaluated-group", "sample_count": 240, "value": 0.51}
+      ]
+    },
+    {
+      "metric_id": "false-negative-rate",
+      "metric_kind": "false_negative_rate",
+      "reference_group_id": "reference-group",
+      "groups": [
+        {"group_id": "reference-group", "sample_count": 250, "value": 0.12},
+        {"group_id": "evaluated-group", "sample_count": 240, "value": 0.14}
+      ]
+    }
+  ],
+  "thresholds": [
+    {
+      "metric_id": "approval-rate",
+      "minimum_group_samples": 100,
+      "maximum_absolute_gap": 0.1,
+      "minimum_parity_ratio": 0.8
+    },
+    {
+      "metric_id": "false-negative-rate",
+      "minimum_group_samples": 100,
+      "maximum_absolute_gap": 0.05
+    }
+  ],
+  "exceptions": []
+}
